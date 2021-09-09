@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "reselect",
+  "version": "${version}",
+  "authors": ["Digifox03"],
+  "name": "Reselect",
+  "environment": "*",
+  "description": "Reselect is a fabric library mod to enable players and modpack creators to customize minecraft behaviour with as little coding knowledge as necessary.",
+  "contact": {
+    "email": "digifox03@protonmail.com",
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/reselect",
+    "issues": "https://github.com/Digifox03/reselect/issues",
+    "sources": "https://github.com/Digifox03/reselect",
+    "discord": "https://discord.gg/pZZ5ubrwQK"
+  },
+  "license": "LGPL-3.0-or-later",
+  "icon": "assets/reselect/icon.png",
+  "depends": {
+    "minecraft": "1.17.x",
+    "fabricloader": "*",
+    "java": ">=16",
+    "fabric-language-kotlin": ">=1.6.4+kotlin.1.5.30"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/pZZ5ubrwQK"
+      },
+      "badges": [ "library" ]
+    }
+  }
+}
