@@ -22,6 +22,7 @@ base {
 dependencies {
     minecraft("com.mojang", "minecraft", minecraftVersion)
     mappings("net.fabricmc", "yarn", yarnMappings, classifier="v2")
+    implementation("com.github.h0tk3y.betterParse", "better-parse", "0.4.2")
     modImplementation("net.fabricmc", "fabric-loader", loaderVersion)
     modImplementation("net.fabricmc", "fabric-language-kotlin", fabricKotlinVersion)
     modImplementation(fabricApi.module("fabric-resource-loader-v0", fabricVersion))
