@@ -1,8 +1,8 @@
 package it.digifox03.reselect.lang.ast
 
 object OperatorName {
-	const val umName = "u+"
-	const val upName = "u-"
+	const val umName = "u-"
+	const val upName = "u+"
 	const val addName = "+"
 	const val subName = "-"
 	const val mulName = "*"
