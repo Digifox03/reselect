@@ -1,5 +1,6 @@
 package it.digifox03.reselect.lang.functions
 
+import it.digifox03.reselect.lang.core.ConstExpr
 import it.digifox03.reselect.lang.core.Expression
 import it.digifox03.reselect.lang.core.Function
 
@@ -23,6 +24,8 @@ object IfFunction : Function {
 		val cond = expr.component1()
 		val bt = expr.component2()
 		val be = expr.component3()
+		if (cond is ConstExpr)
+			return if (cond.value() as Boolean) bt else be
 		require(bt.type == be.type)
 		return IfExpression(cond, bt, be)
 	}

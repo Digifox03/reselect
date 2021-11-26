@@ -5,10 +5,12 @@ fun <T> poly1(
 	ret: String? = null,
 	func: (T, Any) -> Any
 ) = Function { (a) ->
-	@Suppress("UNCHECKED_CAST")
+	val type = ret ?: a.type
 	val tc = requireNotNull(reg.getInstance(a.type))
+	if (a is ConstExpr)
+		return@Function ConstExpr(type, func(tc, a.value()))
 	object : Expression {
-		override val type = ret ?: a.type
+		override val type = type
 		override fun value(): Any = func(tc, a.value())
 	}
 }
@@ -18,9 +20,11 @@ fun <T> poly2(
 	ret: String? = null,
 	func: (T, Any, Any) -> Any
 ) = Function { (a, b) ->
+	val type = ret ?: a.type
 	require(a.type == b.type)
-	@Suppress("UNCHECKED_CAST")
 	val tc = requireNotNull(reg.getInstance(a.type))
+	if (a is ConstExpr && b is ConstExpr)
+		return@Function ConstExpr(type, func(tc, a.value(), b.value()))
 	object : Expression {
 		override val type = ret ?: a.type
 		override fun value(): Any = func(tc, a.value(), b.value())
