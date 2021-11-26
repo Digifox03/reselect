@@ -8,7 +8,9 @@ interface EqualityTC<T> {
 		val reg = TypeClassRegister<EqualityTC<Any>, EqualityTC<*>>()
 		val func = mapOf(
 			"==" to poly2(reg, "boolean", EqualityTC<Any>::eq),
+			"!=" to poly2(reg, "boolean", EqualityTC<Any>::ne)
 		)
 	}
 	fun eq(a: T, b: T): Boolean
+	fun ne(a: T, b: T): Boolean
 }

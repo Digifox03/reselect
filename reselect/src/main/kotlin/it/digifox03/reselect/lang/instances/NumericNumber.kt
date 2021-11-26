@@ -7,6 +7,7 @@ import it.digifox03.reselect.lang.typeclasses.OrderedTC
 object NumericNumber: NumericTC<Double>, OrderedTC<Double>, Instance {
 	override fun register() = NumericTC.reg.register("number", this)
 	override fun eq(a: Double, b: Double)  = a == b
+	override fun ne(a: Double, b: Double)  = a != b
 	override fun le(a: Double, b: Double)  = a <= b
 	override fun ge(a: Double, b: Double)  = a >= b
 	override fun lt(a: Double, b: Double)  = a < b

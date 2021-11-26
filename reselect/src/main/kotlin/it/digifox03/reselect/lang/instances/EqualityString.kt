@@ -6,4 +6,5 @@ import it.digifox03.reselect.lang.typeclasses.EqualityTC
 object EqualityString: EqualityTC<String>, Instance {
 	override fun register() = EqualityTC.reg.register("string", this)
 	override fun eq(a: String, b: String) = a == b
+	override fun ne(a: String, b: String) = a != b
 }
