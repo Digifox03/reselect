@@ -1,15 +1,14 @@
 package it.digifox03.reselect.lang
 
 import it.digifox03.reselect.lang.core.Function
-import it.digifox03.reselect.lang.core.Instance
-import it.digifox03.reselect.lang.functions.IfFunction
-import it.digifox03.reselect.lang.functions.RandFunction
+import it.digifox03.reselect.lang.functions.*
 import it.digifox03.reselect.lang.instances.*
 import it.digifox03.reselect.lang.typeclasses.*
 
 val coreFunctions: Map<String, Function> by lazy {
 	listOf(
-		EqualityString, NumericInteger, NumericNumber,
+		EqualityString, EqualityBoolean,
+		NumericInteger, NumericNumber,
 		RandomInteger, RandomNumber,
 		SeedableInteger, SeedableString
 	).forEach {
@@ -23,7 +22,10 @@ val coreFunctions: Map<String, Function> by lazy {
 		SeedableTC.func
 	)
 	val f = mapOf(
+		AndFunction.function,
 		IfFunction.function,
+		NotFunction.function,
+		OrFunction.function,
 		RandFunction.function,
 	)
 	tc.reduce(Map<String, Function>::plus) + f

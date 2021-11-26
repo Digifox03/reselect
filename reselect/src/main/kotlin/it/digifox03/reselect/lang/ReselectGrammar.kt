@@ -28,7 +28,7 @@ class ReselectGrammar: Grammar<AbstractExpressionTree>() {
 	private val let by regexToken("let\\b")
 	private val `in` by regexToken("in\\b")
 	private val not by regexToken("not\\b")
-	private val and by regexToken("end\\b")
+	private val and by regexToken("and\\b")
 	private val or by regexToken("or\\b")
 
 	private val identifier by
