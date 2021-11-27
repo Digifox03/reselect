@@ -23,7 +23,10 @@ val coreFunctions: Map<String, Function> by lazy {
 	)
 	val f = mapOf(
 		AndFunction.function,
+		ContainsFunction.function,
 		IfFunction.function,
+		LowercaseFunction.function,
+		MatchesFunction.function,
 		NotFunction.function,
 		OrFunction.function,
 		RandFunction.function,
