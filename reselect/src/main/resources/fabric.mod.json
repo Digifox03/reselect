@@ -16,10 +16,10 @@
   "license": "LGPL-3.0-or-later",
   "icon": "assets/reselect/icon.png",
   "depends": {
-    "minecraft": "1.17.x",
+    "minecraft": "1.18.x",
     "fabricloader": "*",
     "java": ">=16",
-    "fabric-language-kotlin": ">=1.6.4+kotlin.1.5.30"
+    "fabric-language-kotlin": ">=1.7.0+kotlin.1.6.0"
   },
   "custom": {
     "modmenu": {
