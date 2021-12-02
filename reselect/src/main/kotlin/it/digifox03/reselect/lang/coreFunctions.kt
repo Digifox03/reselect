@@ -14,8 +14,17 @@ val coreFunctions: Map<String, Function> by lazy {
 	).forEach {
 		it.register()
 	}
+	val livingEntity = listOf(
+		"zombie"
+	)
+	livingEntity.forEach {
+		LivingEntityTC.reg.register(it, LivingEntityLivingEntity)
+		EntityTC.reg.register(it, EntityEntity)
+		SeedableTC.reg.register(it, SeedableEntity)
+	}
 	val tc = listOf(
 		EqualityTC.func,
+		LivingEntityTC.func,
 		NumericTC.func,
 		OrderedTC.func,
 		RandomTC.func,
