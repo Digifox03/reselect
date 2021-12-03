@@ -5,6 +5,12 @@
   "authors": ["Digifox03"],
   "name": "Reselect",
   "environment": "*",
+  "mixins": ["reselect.mixins.json"],
+  "entrypoints": {
+    "client": [
+      "it.digifox03.reselect.test.ClientEntry"
+    ]
+  },
   "description": "Reselect is a fabric library mod to enable players and modpack creators to customize minecraft behaviour with as little coding knowledge as necessary.",
   "contact": {
     "email": "digifox03@protonmail.com",

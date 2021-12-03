@@ -1,0 +1,6 @@
+{
+  "package": "it.digifox03.reselect.test.mixin",
+  "client": [
+    "LivingEntityRendererMixin"
+  ]
+}
