@@ -4,6 +4,11 @@ import it.digifox03.reselect.lang.core.Function
 import it.digifox03.reselect.lang.functions.*
 import it.digifox03.reselect.lang.instances.*
 import it.digifox03.reselect.lang.typeclasses.*
+import it.digifox03.reselect.minecraft.instances.EntityEntity
+import it.digifox03.reselect.minecraft.instances.LivingEntityLivingEntity
+import it.digifox03.reselect.minecraft.instances.SeedableEntity
+import it.digifox03.reselect.minecraft.typeclasses.EntityTC
+import it.digifox03.reselect.minecraft.typeclasses.LivingEntityTC
 
 val coreFunctions: Map<String, Function> by lazy {
 	listOf(
@@ -14,14 +19,6 @@ val coreFunctions: Map<String, Function> by lazy {
 	).forEach {
 		it.register()
 	}
-	val livingEntity = listOf(
-		"zombie"
-	)
-	livingEntity.forEach {
-		LivingEntityTC.reg.register(it, LivingEntityLivingEntity)
-		EntityTC.reg.register(it, EntityEntity)
-		SeedableTC.reg.register(it, SeedableEntity)
-	}
 	val tc = listOf(
 		EqualityTC.func,
 		LivingEntityTC.func,
@@ -29,7 +26,7 @@ val coreFunctions: Map<String, Function> by lazy {
 		OrderedTC.func,
 		RandomTC.func,
 		SeedableTC.func
-	)
+	).reduce(Map<String, Function>::plus)
 	val f = mapOf(
 		AndFunction.function,
 		ContainsFunction.function,
@@ -40,5 +37,5 @@ val coreFunctions: Map<String, Function> by lazy {
 		OrFunction.function,
 		RandFunction.function,
 	)
-	tc.reduce(Map<String, Function>::plus) + f
+	tc + f
 }

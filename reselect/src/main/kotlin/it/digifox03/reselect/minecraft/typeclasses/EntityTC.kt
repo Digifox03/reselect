@@ -1,4 +1,4 @@
-package it.digifox03.reselect.lang.typeclasses
+package it.digifox03.reselect.minecraft.typeclasses
 
 import it.digifox03.reselect.lang.core.TypeClassRegister
 import it.digifox03.reselect.lang.core.poly1
