@@ -8,6 +8,7 @@ interface LivingEntityTC<T> {
 		val reg = TypeClassRegister<LivingEntityTC<Any>, LivingEntityTC<*>>()
 		val func = mapOf(
 			"isbaby" to poly1(reg, "boolean", LivingEntityTC<Any>::isBaby),
+			"health" to poly1(reg, "number", LivingEntityTC<Any>::health)
 		)
 	}
 	fun isBaby(entity: T): Boolean
