@@ -10,6 +10,7 @@ val yarnMappings: String by project
 val loaderVersion: String by project
 val fabricVersion: String by project
 val fabricKotlinVersion: String by project
+val betterParseVersion: String by project
 val archiveName: String by project
 
 version = modVersion
@@ -22,7 +23,7 @@ base {
 dependencies {
     minecraft("com.mojang", "minecraft", minecraftVersion)
     mappings("net.fabricmc", "yarn", yarnMappings, classifier="v2")
-    implementation("com.github.h0tk3y.betterParse", "better-parse", "0.4.2")
+    include(implementation("com.github.h0tk3y.betterParse", "better-parse-jvm", betterParseVersion))
     modImplementation("net.fabricmc", "fabric-loader", loaderVersion)
     modImplementation("net.fabricmc", "fabric-language-kotlin", fabricKotlinVersion)
     modImplementation(fabricApi.module("fabric-resource-loader-v0", fabricVersion))
@@ -30,20 +31,26 @@ dependencies {
 
 java {
     withSourcesJar()
-    sourceCompatibility = JavaVersion.VERSION_16
-    targetCompatibility = JavaVersion.VERSION_16
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 tasks.withType<ProcessResources> {
     inputs.property("version", modVersion)
+    inputs.property("fabric_kotlin_version", fabricKotlinVersion)
+    inputs.property("java_version", 17)
     filesMatching("fabric.mod.json") {
-        expand("version" to modVersion)
+        expand(
+            "version" to modVersion,
+            "fabric_kotlin_version" to fabricKotlinVersion,
+            "java_version" to 17
+        )
     }
 }
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
-    options.release.set(16)
+    options.release.set(17)
 }
 
 tasks.withType<Jar> {
