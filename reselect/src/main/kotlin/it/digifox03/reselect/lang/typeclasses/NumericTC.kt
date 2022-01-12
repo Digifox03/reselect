@@ -6,7 +6,9 @@ import it.digifox03.reselect.lang.core.poly2
 
 interface NumericTC<T>: OrderedTC<T> {
 	companion object {
-		val reg = TypeClassRegister<NumericTC<Any>, NumericTC<*>>(OrderedTC.reg)
+		val reg = TypeClassRegister<NumericTC<Any>, NumericTC<*>>(
+			OrderedTC.reg, name="Numeric"
+		)
 		val func = mapOf(
 			"+"  to poly2(reg, null, NumericTC<Any>::add),
 			"-"  to poly2(reg, null, NumericTC<Any>::sub),

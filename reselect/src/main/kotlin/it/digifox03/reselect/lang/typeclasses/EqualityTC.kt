@@ -5,7 +5,9 @@ import it.digifox03.reselect.lang.core.poly2
 
 interface EqualityTC<T> {
 	companion object {
-		val reg = TypeClassRegister<EqualityTC<Any>, EqualityTC<*>>()
+		val reg = TypeClassRegister<EqualityTC<Any>, EqualityTC<*>>(
+			name="Equality"
+		)
 		val func = mapOf(
 			"==" to poly2(reg, "boolean", EqualityTC<Any>::eq),
 			"!=" to poly2(reg, "boolean", EqualityTC<Any>::ne)

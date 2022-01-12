@@ -6,7 +6,9 @@ fun <T> poly1(
 	func: (T, Any) -> Any
 ) = Function { (a) ->
 	val type = ret ?: a.type
-	val tc = requireNotNull(reg.getInstance(a.type))
+	val tc = requireNotNull(reg.getInstance(a.type)) {
+		"no instance of (${reg.name} ${a.type}) found"
+	}
 	if (a is ConstExpr)
 		return@Function ConstExpr(type, func(tc, a.value()))
 	object : Expression {
@@ -22,7 +24,9 @@ fun <T> poly2(
 ) = Function { (a, b) ->
 	val type = ret ?: a.type
 	require(a.type == b.type)
-	val tc = requireNotNull(reg.getInstance(a.type))
+	val tc = requireNotNull(reg.getInstance(a.type)) {
+		"no instance of (${reg.name} ${a.type}) found"
+	}
 	if (a is ConstExpr && b is ConstExpr)
 		return@Function ConstExpr(type, func(tc, a.value(), b.value()))
 	object : Expression {

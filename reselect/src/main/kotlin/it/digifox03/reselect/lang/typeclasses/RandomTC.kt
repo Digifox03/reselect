@@ -6,7 +6,7 @@ import kotlin.random.Random
 
 interface RandomTC<T> {
 	companion object {
-		val reg = TypeClassRegister<RandomTC<Any>, RandomTC<*>>()
+		val reg = TypeClassRegister<RandomTC<Any>, RandomTC<*>>(name="Random")
 		val func = mapOf<String, Function>()
 	}
 	fun rand(random: Random, from: T, to: T): T

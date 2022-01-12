@@ -5,7 +5,9 @@ import it.digifox03.reselect.lang.core.poly1
 
 interface EntityTC<T> {
 	companion object {
-		val reg = TypeClassRegister<EntityTC<Any>, EntityTC<*>>()
+		val reg = TypeClassRegister<EntityTC<Any>, EntityTC<*>>(
+			name="Entity"
+		)
 		val func = mapOf(
 			"x" to poly1(reg, "boolean", EntityTC<Any>::x),
 		)

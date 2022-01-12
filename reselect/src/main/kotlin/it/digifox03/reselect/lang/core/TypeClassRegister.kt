@@ -1,7 +1,8 @@
 package it.digifox03.reselect.lang.core
 
 open class TypeClassRegister<out T, in R>(
-	private vararg val subclasses: TypeClassRegister<*, R>
+	private vararg val subclasses: TypeClassRegister<*, R>,
+	val name: String
 ) {
 	private val instances = mutableMapOf<String, T>()
 	fun getInstance(name: String): T? = instances[name]

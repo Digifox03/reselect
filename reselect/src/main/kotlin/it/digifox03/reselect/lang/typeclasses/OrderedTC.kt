@@ -5,7 +5,9 @@ import it.digifox03.reselect.lang.core.poly2
 
 interface OrderedTC<T>: EqualityTC<T> {
 	companion object {
-		val reg = TypeClassRegister<OrderedTC<Any>, OrderedTC<*>>(EqualityTC.reg)
+		val reg = TypeClassRegister<OrderedTC<Any>, OrderedTC<*>>(
+			EqualityTC.reg, name="Ordered"
+		)
 		val func = mapOf(
 			"<"  to poly2(reg, "boolean", OrderedTC<Any>::lt),
 			">"  to poly2(reg, "boolean", OrderedTC<Any>::gt),
