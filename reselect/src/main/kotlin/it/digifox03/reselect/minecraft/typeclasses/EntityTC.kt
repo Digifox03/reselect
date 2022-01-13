@@ -13,8 +13,8 @@ interface EntityTC<T> {
 			"y" to poly1(reg, "boolean", EntityTC<Any>::y),
 			"z" to poly1(reg, "boolean", EntityTC<Any>::z),
 			"biome" to poly1(reg, "string", EntityTC<Any>::biome),
-			"hasname" to poly1(reg, "string", EntityTC<Any>::hasName),
-			"name" to poly1(reg, "boolean", EntityTC<Any>::name),
+			"hasname" to poly1(reg, "boolean", EntityTC<Any>::hasName),
+			"name" to poly1(reg, "string", EntityTC<Any>::name),
 		)
 	}
 	fun x(entity: T): Double
