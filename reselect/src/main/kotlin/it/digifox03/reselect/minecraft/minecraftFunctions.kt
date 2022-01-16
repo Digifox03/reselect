@@ -1,9 +1,8 @@
 package it.digifox03.reselect.minecraft
 
 import it.digifox03.reselect.lang.core.Function
-import it.digifox03.reselect.minecraft.instances.EntityEntity
-import it.digifox03.reselect.minecraft.instances.LivingEntityLivingEntity
-import it.digifox03.reselect.minecraft.instances.SeedableEntity
+import it.digifox03.reselect.minecraft.instances.*
+import it.digifox03.reselect.minecraft.typeclasses.CollaredTC
 import it.digifox03.reselect.minecraft.typeclasses.EntityTC
 import it.digifox03.reselect.minecraft.typeclasses.LivingEntityTC
 
@@ -87,15 +86,18 @@ val entities = livingEntities
 
 val minecraftFunctions: Map<String, Function> by lazy {
 	listOf(
+		CollaredCat,
+		CollaredWolf,
 		EntityEntity,
 		LivingEntityLivingEntity,
-		SeedableEntity
+		SeedableEntity,
 	).forEach {
 		it.register()
 	}
 	val tc = listOf(
 		EntityTC.func,
-		LivingEntityTC.func
+		LivingEntityTC.func,
+		CollaredTC.func,
 	).reduce(Map<String, Function>::plus)
 	val f = listOf<Pair<String, Function>>(
 	)
