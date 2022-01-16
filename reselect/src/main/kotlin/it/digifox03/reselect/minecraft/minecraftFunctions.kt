@@ -5,6 +5,7 @@ import it.digifox03.reselect.minecraft.instances.*
 import it.digifox03.reselect.minecraft.typeclasses.CollaredTC
 import it.digifox03.reselect.minecraft.typeclasses.EntityTC
 import it.digifox03.reselect.minecraft.typeclasses.LivingEntityTC
+import it.digifox03.reselect.minecraft.typeclasses.TameableTC
 
 val livingEntities = listOf(
 	"axolotl",
@@ -91,6 +92,8 @@ val minecraftFunctions: Map<String, Function> by lazy {
 		EntityEntity,
 		LivingEntityLivingEntity,
 		SeedableEntity,
+		TameableHorseBase,
+		TameableTameableEntity,
 	).forEach {
 		it.register()
 	}
@@ -98,6 +101,7 @@ val minecraftFunctions: Map<String, Function> by lazy {
 		EntityTC.func,
 		LivingEntityTC.func,
 		CollaredTC.func,
+		TameableTC.func,
 	).reduce(Map<String, Function>::plus)
 	val f = listOf<Pair<String, Function>>(
 	)
