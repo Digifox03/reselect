@@ -1,6 +1,7 @@
 package it.digifox03.reselect.minecraft
 
 import it.digifox03.reselect.lang.core.Function
+import it.digifox03.reselect.minecraft.functions.*
 import it.digifox03.reselect.minecraft.instances.*
 import it.digifox03.reselect.minecraft.typeclasses.CollaredTC
 import it.digifox03.reselect.minecraft.typeclasses.EntityTC
@@ -103,7 +104,21 @@ val minecraftFunctions: Map<String, Function> by lazy {
 		CollaredTC.func,
 		TameableTC.func,
 	).reduce(Map<String, Function>::plus)
-	val f = listOf<Pair<String, Function>>(
+	val f = listOf(
+		AxolotlVariant.function,
+		CatType.function,
+		FoxType.function,
+		HorseColor.function,
+		HorseMarking.function,
+		MooshroomType.function,
+		PandaGene.function,
+		ParrotVariant.function,
+		RabbitVariant.function,
+		SheepColor.function,
+		ShulkerColor.function,
+		TropicalFishBase.function,
+		TropicalFishPattern.function,
+		TropicalFishVariant.function
 	)
 	tc + f
 }
