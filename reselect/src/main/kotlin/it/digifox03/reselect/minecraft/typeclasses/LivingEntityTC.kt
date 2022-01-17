@@ -9,7 +9,7 @@ interface LivingEntityTC<T> {
 			name="LivingEntity"
 		)
 		val func = mapOf(
-			"isbaby" to poly1(reg, "boolean", LivingEntityTC<Any>::isBaby),
+			"is_baby" to poly1(reg, "boolean", LivingEntityTC<Any>::isBaby),
 			"health" to poly1(reg, "number", LivingEntityTC<Any>::health)
 		)
 	}

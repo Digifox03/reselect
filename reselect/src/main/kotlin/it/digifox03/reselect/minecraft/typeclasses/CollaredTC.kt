@@ -9,7 +9,7 @@ interface CollaredTC<T> {
 			name="Collared"
 		)
 		val func = mapOf(
-			"collar" to poly1(reg, "string", CollaredTC<Any>::collar),
+			"collar_color" to poly1(reg, "string", CollaredTC<Any>::collar),
 		)
 	}
 	fun collar(entity: T): String
