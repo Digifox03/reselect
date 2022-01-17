@@ -9,7 +9,7 @@ interface TameableTC<T> {
 			name="Tameable"
 		)
 		val func = mapOf(
-			"istamed" to poly1(reg, "boolean", TameableTC<Any>::isTamed),
+			"tamed" to poly1(reg, "boolean", TameableTC<Any>::isTamed),
 		)
 	}
 	fun isTamed(entity: T): Boolean
