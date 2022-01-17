@@ -16,7 +16,7 @@ class ReselectGrammar: Grammar<AbstractExpressionTree>() {
 	@Suppress("unused")
 	val whitespace by regexToken("\\s+", ignore = true)
 	@Suppress("unused")
-	val comment by regexToken("#[^\\n]*\\n", ignore = true)
+	val comment by regexToken("--[^\\n]*\\n", ignore = true)
 
 	private val `if` by regexToken("if\\b")
 	private val then by regexToken("then\\b")
