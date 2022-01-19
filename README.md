@@ -14,7 +14,7 @@ This mod is temporarily replacing Varied Mob Textures until integration is
 implemented.
 
 The mod is in Alpha stage, and for testing purposes, it also contains features
-that should be split off into another mod [Varied Mobs Textures].
+that should be split off into another mod [Varied Mob Textures].
 
 The extra features provided are the ability to use Reselect scripts in resource
 packs to have multiple textures for the same mob.
