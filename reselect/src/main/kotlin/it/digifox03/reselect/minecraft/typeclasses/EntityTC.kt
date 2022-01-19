@@ -9,10 +9,10 @@ interface EntityTC<T> {
 			name="Entity"
 		)
 		val func = mapOf(
-			"x" to poly1(reg, "boolean", EntityTC<Any>::x),
-			"y" to poly1(reg, "boolean", EntityTC<Any>::y),
-			"z" to poly1(reg, "boolean", EntityTC<Any>::z),
-			"biome" to poly1(reg, "string", EntityTC<Any>::biome),
+			"x" to poly1(reg, "number", EntityTC<Any>::x),
+			"y" to poly1(reg, "number", EntityTC<Any>::y),
+			"z" to poly1(reg, "number", EntityTC<Any>::z),
+			"current_biome" to poly1(reg, "string", EntityTC<Any>::biome),
 			"has_name" to poly1(reg, "boolean", EntityTC<Any>::hasName),
 			"name" to poly1(reg, "string", EntityTC<Any>::name),
 		)
