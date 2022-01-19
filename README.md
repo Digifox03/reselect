@@ -1,5 +1,12 @@
 # Reselect
 
+<a href="https://github.com/Digifox03/reselect/releases">
+  <img src="https://img.shields.io/github/v/release/Digifox03/reselect?sort=semver"></a>
+<a href="https://github.com/Digifox03/reselect/blob/master/COPYING" alt="License">
+  <img src="https://img.shields.io/github/license/Digifox03/reselect"/></a>
+<a href="https://discord.gg/pZZ5ubrwQK" alt="Discord">
+  <img src="https://img.shields.io/discord/866331112992669727?logo=discord"/></a>
+
 Reselect is a fabric library mod to enable players and modpack creators
 to customize minecraft behaviour with as little coding knowledge as
 necessary.
