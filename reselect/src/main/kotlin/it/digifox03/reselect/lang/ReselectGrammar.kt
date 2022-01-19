@@ -6,13 +6,12 @@ import com.github.h0tk3y.betterParse.grammar.parser
 import com.github.h0tk3y.betterParse.lexer.literalToken
 import com.github.h0tk3y.betterParse.lexer.regexToken
 import com.github.h0tk3y.betterParse.parser.Parser
-import it.digifox03.reselect.lang.ast.AbstractExpressionTree.*
 import it.digifox03.reselect.lang.ast.*
 
 /*
  * This mess has to be replaced by an actual parser + lexer
  */
-class ReselectGrammar: Grammar<AbstractExpressionTree>() {
+class ReselectGrammar: Grammar<AbstractSyntaxTree>() {
 	@Suppress("unused")
 	val whitespace by regexToken("\\s+", ignore = true)
 	@Suppress("unused")
@@ -125,16 +124,14 @@ class ReselectGrammar: Grammar<AbstractExpressionTree>() {
 		skip(lpar) and callBlock and skip(rpar)
 
 	private val primitive =
-		numberP or integerP or stringP or trueP or falseP map {
-			Primitive(it)
-		}
+		numberP or integerP or stringP or trueP or falseP
 
 	private val ifOpts =
 		separated(exprP and skip(then) and exprP, elseif)
 	private val ifBlock =
 		ifOpts and skip(`else`) and exprP map { (opts, def) ->
 			opts.terms.foldRight(def) { (c, r), e ->
-				Function(OperatorName.ifName, listOf(c, r, e))
+				FunctionCall(OperatorName.ifName, arrayOf(c, r, e))
 			}
 		}
 	private val ifExpr =
@@ -168,7 +165,7 @@ class ReselectGrammar: Grammar<AbstractExpressionTree>() {
 	private val letBlock =
 		oneOrMore(decl) and skip(`in`) and exprP map { (decl, expr0) ->
 			decl.foldRight(expr0) { (name, params, value), expr ->
-				Let(name, params, value, expr)
+				Definition(name, params.toTypedArray(), value, expr)
 			}
 		}
 	private val letExpr =
@@ -176,7 +173,7 @@ class ReselectGrammar: Grammar<AbstractExpressionTree>() {
 
 	private val funExpr =
 		name and optional(call) map { (name, params) ->
-			Function(name, params ?: emptyList())
+			FunctionCall(name, params?.toTypedArray() ?: emptyArray())
 		}
 
 	private val parExpr =
@@ -192,7 +189,7 @@ class ReselectGrammar: Grammar<AbstractExpressionTree>() {
 	private val accExpr =
 		priExpr and zeroOrMore(access) map {(expr, acc) ->
 			acc.fold(expr) { e, (name, call) ->
-				Function(name, listOf(e) + call)
+				FunctionCall(name, arrayOf(e) + call)
 			}
 		}
 
@@ -201,14 +198,14 @@ class ReselectGrammar: Grammar<AbstractExpressionTree>() {
 	private val unExpr =
 		zeroOrMore(unOp) and accExpr map { (op, e) ->
 			op.foldRight(e) { name, expr ->
-				Function(name, listOf(expr))
+				FunctionCall(name, arrayOf(expr))
 			}
 		}
 
-	private fun operator(expr: Parser<Expr>, op: Parser<String>) =
+	private fun operator(expr: Parser<AbstractSyntaxTree>, op: Parser<String>) =
 		expr and zeroOrMore(op and expr) map { (e, ops) ->
 			ops.fold(e) { lhs, (name, rhs) ->
-				Function(name, listOf(lhs, rhs))
+				FunctionCall(name, arrayOf(lhs, rhs))
 			}
 		}
 
@@ -227,7 +224,7 @@ class ReselectGrammar: Grammar<AbstractExpressionTree>() {
 	private val orExpr =
 		operator(andExpr, orP)
 
-	private val expr: Parser<Expr> = orExpr
+	private val expr: Parser<AbstractSyntaxTree> = orExpr
 
-	override val rootParser = expr map { AbstractExpressionTree(it) }
+	override val rootParser = expr
 }
