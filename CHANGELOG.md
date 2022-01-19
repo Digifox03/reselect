@@ -4,6 +4,8 @@ All notable changes to Reselect will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
 ## [v0.3.0]
 ### Added
 - Functions `axolotl_variant`, `cat_type`, `fox_type`, `horse_color`,
@@ -46,7 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 `name`.
 - Type-class `LivingEntity` and functions `isbaby` and `health`.
 
-[v0.3.0]: https://github.com/Digifox03/reselect/compare/v0.2.0-alpha.5...v0.2.0
+[Unreleased]: https://github.com/Digifox03/reselect/compare/v0.3.0...HEAD
+[v0.3.0]: https://github.com/Digifox03/reselect/compare/v0.2.0-alpha.5...v0.3.0
 [v0.2.0-alpha.5]: https://github.com/Digifox03/reselect/compare/v0.2.0-alpha.4...v0.2.0-alpha.5
 [v0.2.0-alpha.4]: https://github.com/Digifox03/reselect/compare/v0.2.0-alpha.3...v0.2.0-alpha.4
 [v0.2.0-alpha.3]: https://github.com/Digifox03/reselect/compare/v0.2.0-alpha.2...v0.2.0-alpha.3
