@@ -1,9 +1,12 @@
 package it.digifox03.reselect.lang.ast;
 
-public final class StringConstant extends AbstractSyntaxTree {
-    public final String value;
-
-    public StringConstant(String value) {
-        this.value = value;
+public record StringConstant(String value) implements AbstractSyntaxTree {
+    @Override
+    public String toString() {
+        String res = value
+                .replace("\n", "\\n")
+                .replace("\t", "\\t")
+                .replace("\"", "\\\"");
+        return '"' + res + '"';
     }
 }

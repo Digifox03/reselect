@@ -1,9 +1,8 @@
 package it.digifox03.reselect.lang.ast;
 
-public final class IntegerConstant extends AbstractSyntaxTree {
-    public final long value;
-
-    public IntegerConstant(long value) {
-        this.value = value;
+public record IntegerConstant(long value) implements AbstractSyntaxTree {
+    @Override
+    public String toString() {
+        return Long.toString(value);
     }
 }

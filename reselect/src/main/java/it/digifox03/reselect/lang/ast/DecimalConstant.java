@@ -1,9 +1,8 @@
 package it.digifox03.reselect.lang.ast;
 
-public final class DecimalConstant extends AbstractSyntaxTree {
-    public final double value;
-
-    public DecimalConstant(double value) {
-        this.value = value;
+public record DecimalConstant(double value) implements AbstractSyntaxTree {
+    @Override
+    public String toString() {
+        return Double.toString(value);
     }
 }

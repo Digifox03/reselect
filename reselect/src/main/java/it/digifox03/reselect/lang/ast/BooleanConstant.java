@@ -1,9 +1,8 @@
 package it.digifox03.reselect.lang.ast;
 
-public final class BooleanConstant extends AbstractSyntaxTree {
-    public final boolean value;
-
-    public BooleanConstant(boolean value) {
-        this.value = value;
+public record BooleanConstant(boolean value) implements AbstractSyntaxTree {
+    @Override
+    public String toString() {
+        return Boolean.toString(value);
     }
 }

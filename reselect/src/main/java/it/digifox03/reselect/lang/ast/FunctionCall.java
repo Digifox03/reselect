@@ -1,11 +1,23 @@
 package it.digifox03.reselect.lang.ast;
 
-public final class FunctionCall extends AbstractSyntaxTree {
-    public final String name;
-    public final AbstractSyntaxTree[] arguments;
-
-    public FunctionCall(String name, AbstractSyntaxTree[] arguments) {
-        this.name = name;
-        this.arguments = arguments;
+public record FunctionCall(
+        String name,
+        AbstractSyntaxTree[] arguments
+) implements AbstractSyntaxTree {
+    @Override
+    public String toString() {
+        if (arguments.length == 0) {
+            return name;
+        } else {
+            StringBuilder builder = new StringBuilder();
+            builder.append(name);
+            builder.append("(");
+            for (int i = 0; i < arguments.length; i++) {
+                if (i != 0) builder.append(", ");
+                builder.append(arguments[i]);
+            }
+            builder.append(")");
+            return builder.toString();
+        }
     }
 }

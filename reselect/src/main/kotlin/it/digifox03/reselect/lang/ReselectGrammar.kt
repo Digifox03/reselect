@@ -118,12 +118,12 @@ class ReselectGrammar: Grammar<AbstractSyntaxTree>() {
 
 	private val callBlock =
 		separated(exprP, comma) map { ops ->
-			ops.terms
+			ops.terms.toTypedArray()
 		}
 	private val call =
 		skip(lpar) and callBlock and skip(rpar)
 
-	private val primitive =
+	private val primitive: Parser<AbstractSyntaxTree> =
 		numberP or integerP or stringP or trueP or falseP
 
 	private val ifOpts =
@@ -173,7 +173,7 @@ class ReselectGrammar: Grammar<AbstractSyntaxTree>() {
 
 	private val funExpr =
 		name and optional(call) map { (name, params) ->
-			FunctionCall(name, params?.toTypedArray() ?: emptyArray())
+			FunctionCall(name, params ?: emptyArray())
 		}
 
 	private val parExpr =
@@ -184,7 +184,7 @@ class ReselectGrammar: Grammar<AbstractSyntaxTree>() {
 
 	private val access =
 		skip(dot) and name and optional(call) map {(name, args) ->
-			name to (args ?: emptyList())
+			name to (args ?: emptyArray())
 		}
 	private val accExpr =
 		priExpr and zeroOrMore(access) map {(expr, acc) ->
